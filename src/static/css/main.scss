@@ -1,0 +1,130 @@
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: #fff;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 0.6rem 2rem;
+  background-color: #fff;
+  border: none;
+}
+
+.main-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh;
+}
+
+.side-bar {
+  width: 320px;
+  height: 100vh;
+  background-color: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  h3 {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #555;
+    padding: 1rem;
+  }
+  .btn {
+    &:nth-child(1) {
+      margin-top: 60px;
+    }
+    outline: none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 1rem 2rem;
+    &.active {
+      background-color: rgb(34, 148, 255);
+      color: #fff;
+      box-shadow: 0px 10px 20px -10px rgb(34, 148, 255);
+    }
+    &:hover {
+      background-color: rgb(34, 148, 255);
+      color: #fff;
+    }
+  }
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1920px;
+  margin: auto;
+  height: 100vh;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid-wrapper {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #f1f1f1;
+  width: fit-content;
+  height: fit-content;
+
+  .cols {
+    display: flex;
+    flex-direction: row;
+    .row {
+      border: 1px solid rgb(196, 196, 196);
+      background-color: #fff;
+      transition: all ease-in-out 200ms;
+    }
+    .wall {
+      border: 1px solid #333;
+      background-color: #333;
+    }
+    .start {
+      border: 1px solid #2f90ff;
+      background-color: #2f90ff;
+    }
+    .end {
+      border: 1px solid #ff0f57;
+      background-color: #ff0f57;
+    }
+    .path {
+      border: 1px solid #f1ff2f;
+      background-color: #f1ff2f;
+      animation: pop ease-in-out 1s 1 forwards;
+    }
+    .wall,
+    .start,
+    .end {
+      animation: pop ease-in-out 600ms 1 forwards;
+    }
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0);
+    border-radius: 50%;
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    border-radius: 0%;
+    transform: scale(1);
+  }
+}
