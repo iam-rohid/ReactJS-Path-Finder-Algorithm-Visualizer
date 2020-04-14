@@ -37,10 +37,10 @@ function Node(i, j, a) {
     if (j < row - 1) this.neighbors.push(grid[i][j + 1]);
     if (i > 0) this.neighbors.push(grid[i - 1][j]);
     if (j > 0) this.neighbors.push(grid[i][j - 1]);
-    if (i < cols - 1 && j < row - 1) this.neighbors.push(grid[i + 1][j + 1]);
-    if (i < cols - 1 && j > 0) this.neighbors.push(grid[i + 1][j - 1]);
-    if (i > 0 && j < row - 1) this.neighbors.push(grid[i - 1][j + 1]);
-    if (i > 0 && j > 0) this.neighbors.push(grid[i - 1][j - 1]);
+    // if (i < cols - 1 && j < row - 1) this.neighbors.push(grid[i + 1][j + 1]);
+    // if (i < cols - 1 && j > 0) this.neighbors.push(grid[i + 1][j - 1]);
+    // if (i > 0 && j < row - 1) this.neighbors.push(grid[i - 1][j + 1]);
+    // if (i > 0 && j > 0) this.neighbors.push(grid[i - 1][j - 1]);
   };
 }
 
@@ -48,8 +48,8 @@ export class PathFindingVisualizer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cols: 50,
-      row: 50,
+      cols: 40,
+      row: 60,
       gridW: 600,
       gridH: 600,
       grid: [],
@@ -140,15 +140,17 @@ export class PathFindingVisualizer extends Component {
         }
       }
     }
-    var wallnumber = (this.state.cols * this.state.row) / 2;
+    var wallnumber = (this.state.cols * this.state.row) / 3;
     for (let i = 0; i < wallnumber; i++) {
+      // setTimeout(() => {
       var x = Math.floor(Math.random() * this.state.cols);
       var y = Math.floor(Math.random() * this.state.row);
       if (newGrid[x][y].s !== "start" && newGrid[x][y].s !== "end") {
         newGrid[x][y].s = "wall";
+        this.setState({ grid: newGrid });
       }
+      // }, 50);
     }
-    this.setState({ grid: newGrid });
   }
   // calling a* algorithm
   CallAStar() {
@@ -210,29 +212,29 @@ export class PathFindingVisualizer extends Component {
           </button>
         </div>
         <div className="wrapper">
-          <div className="grid-wrapper">
+          <table className="grid-wrapper">
             {this.state.grid.map((cols, key1) => {
               return (
-                <div key={key1} className="cols">
+                <tr key={key1} className="cols">
                   {cols.map((row, key2) => {
                     return (
-                      <div
+                      <td
                         key={key2}
                         className={`row ${row.s}`}
-                        style={{
-                          width: `${row.a}px`,
-                          height: `${row.a}px`,
-                        }}
+                        // style={{
+                        //   width: `${row.a}px`,
+                        //   height: `${row.a}px`,
+                        // }}
                         onClick={(event) => {
                           this.nodeClick(row);
                         }}
-                      ></div>
+                      ></td>
                     );
                   })}
-                </div>
+                </tr>
               );
             })}
-          </div>
+          </table>
         </div>
       </div>
     );

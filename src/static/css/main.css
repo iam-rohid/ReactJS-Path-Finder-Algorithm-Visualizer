@@ -105,22 +105,12 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   border: 1px solid #f1f1f1;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
 }
 
 .grid-wrapper .cols {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
 }
 
 .grid-wrapper .cols .row {
@@ -128,6 +118,8 @@ body {
   background-color: #fff;
   -webkit-transition: all ease-in-out 200ms;
   transition: all ease-in-out 200ms;
+  width: 16px;
+  height: 16px;
 }
 
 .grid-wrapper .cols .wall {

@@ -77,16 +77,18 @@ body {
   display: flex;
   flex-direction: column;
   border: 1px solid #f1f1f1;
-  width: fit-content;
-  height: fit-content;
+  // width: fit-content;
+  // height: fit-content;
 
   .cols {
     display: flex;
-    flex-direction: row;
+    // flex-direction: row;
     .row {
       border: 1px solid rgb(196, 196, 196);
       background-color: #fff;
       transition: all ease-in-out 200ms;
+      width: 16px;
+      height: 16px;
     }
     .wall {
       border: 1px solid #333;
